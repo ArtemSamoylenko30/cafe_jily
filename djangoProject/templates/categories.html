@@ -1,0 +1,38 @@
+OST, [22.07.21 19:16]
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>Категории</h3>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            {% for item in categories %}
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href='{% url "category_delete" pk=item.pk%}'>
+                            <button type="button" class="btn btn-primary btn-sm">Удалить</button>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href='{% url "category_update" pk=item.pk%}'>
+                            <button type="button" class="btn btn-primary btn-sm">Редактировать</button>
+                        </a>
+                    </div>
+                    <div class="col-md-3">{{ item.title }} : {{ item.cat_order }}</div>
+                </div>
+            <hr/>
+            {% endfor %}
+            <div class="row">
+                <div class='col-md-6 centered'>
+                    <a href='{% url "category_add" %}'>
+                        <button type="button" class="btn btn-primary btn-sm">
+                            Новая категория
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <hr/>
+        </div>
+    </div>
+{% endblock %}
